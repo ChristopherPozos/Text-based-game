@@ -1,59 +1,32 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #68726927;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+    background-color: grey;
+}
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-}
-
-#game-container {
-    width: 80%;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
+    margin-left: 10%;
+    border: solid 5px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 75%;
+    flex-wrap: wrap;
+    background-color: beige;
 }
 
-h4 {
-    color: black;
-    font-weight: bold;
+#description {
+    margin: 20px 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.atrapado {
-    width: 30%;
-    height: 20px;
-    margin-left: 550px;
-    padding: 5px 0 0 0;
-    text-align: center;
-    background-color: yellow;
-    color: black;
-    font-weight: bolder;
-    border-radius: 5px;
-}
-
-.muerto {
-    width: 30%;
-    height: 20px;
-    margin-left: 550px;
-    padding: 5px 0 0 0;
-    text-align: center;
-    background-color: red;
-    color: black;
-    font-weight: bolder;
-    border-radius: 5px;
-}
-
-.success {
-    width: 30%;
-    height: 20px;
-    margin-left: 550px;
-    padding: 5px 0 0 0;
-    text-align: center;
-    background-color: green;
-    color: white;
-    border-radius: 5px;
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    justify-content: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 button {
@@ -62,21 +35,15 @@ button {
     font-weight: bolder;
     padding: 14px 28px; 
     cursor: pointer; 
-    border-radius: 5px; 
+    border-radius: 10px; 
     display: inline-flex;
     background-color: #c1c4bc;
     margin-bottom: 10px;
 }
 
-.leftButton{
-    margin-left: 30px;
-}
-
-.rightButton{
-    margin-left: 30px;
-}
-
 img {
-    height: 400px;
-    width: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
