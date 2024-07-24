@@ -1,162 +1,159 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const gameContainer = document.getElementById('game-container');
+let gameState = {
+    currentStage: 0     //Stage tracking
+};
 
-    function startGame() {
-        gameContainer.innerHTML = '<h4>¡Bienvenido al juego!</h4>';
-        gameContainer.innerHTML += '<p class="question">El siguiente juego basado en texto plantea una historia con múltiples caminos y desenlaces.</p>';
-        gameContainer.innerHTML += '<p class="question">Haz click en comenzar</p>';
-        gameContainer.innerHTML += '<button id="startButton">Comenzar</button>';
-
-        document.getElementById('startButton').addEventListener('click', () => {
-            gameContainer.innerHTML = '<h4>Historia</h4>';
-            gameContainer.innerHTML += '<p>Te encuentras perdido en un bosque encantado. Los rumores dicen que se esconde un tesoro en el bosque. Puedes morir, quedar atrapado, escapar o volverte millonario, todo dependerá de tus decisiones.</p>'
-            gameContainer.innerHTML += '<p>Has encontrado un sendero. ¿Deseas seguirlo o crear tu propio camino?</p>'
-            gameContainer.innerHTML += '<button id="sendero" class="leftButton">Seguir Sendero</button>';
-            gameContainer.innerHTML += '<button id="bosque" class="rightButton">Adentrarse en Bosque</button>';
-
-            document.getElementById('sendero').addEventListener('click', () => {
-                gameContainer.innerHTML = '<h4>¡Has elegido seguir por el sendero!</h4>';
-                gameContainer.innerHTML += '<p>Has caminado durante varios kilometros y te encuentras con una división de caminos al frente.</p>'
-                gameContainer.innerHTML += '<p>¿Qué camino decides tomar?</p>'
-                gameContainer.innerHTML += '<button id="caminoIzquierda" class="leftButton">Izquierda</button>';
-                gameContainer.innerHTML += '<button id="caminoDerecha" class="rightButton">Derecha</button>';
-
-                document.getElementById('caminoIzquierda').addEventListener('click', () => {
-                    gameContainer.innerHTML = '<h4>¡Has elegido ir por el camino de la izquierda!</h4>';
-                    gameContainer.innerHTML += '<p>Luego de otra larga caminata te has encontrado con una cueva enorme y muy obscura.</p>'
-                    gameContainer.innerHTML += '<p>¿Qué decides hacer?</p>'
-                    gameContainer.innerHTML += '<button id="entrarCueva" class="leftButton">Entrar</button>';
-                    gameContainer.innerHTML += '<button id="ignorarCueva" class="rightButton">Seguir Adelante</button>';
-
-                    document.getElementById('entrarCueva').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido entrar a la cueva!</h4>';
-                        gameContainer.innerHTML += '<p>Te encuentras con una aldea perdida y te capturan.</p>'
-                        gameContainer.innerHTML += '<p class="atrapado">HAS QUEDADO ATRAPADO EN LA CUEVA</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/Atrapado-cueva.png">'
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-
-                    document.getElementById('ignorarCueva').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido ignorar la cueva!</h4>';
-                        gameContainer.innerHTML += '<p>Caminaste por otros varios kilometros y resbalaste por un barranco.</p>'
-                        gameContainer.innerHTML += '<p class="muerto">HAS MUERTO</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/Caída-libre.png">'
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                        
-                    })
-                })
-                document.getElementById('caminoDerecha').addEventListener('click', () => {
-                    gameContainer.innerHTML = '<h4>¡Has elegido ir por el camino de la derecha!</h4>';
-                    gameContainer.innerHTML += '<p>Luego de otra larga caminata te has encontrado con un río muy agitado.</p>'
-                    gameContainer.innerHTML += '<p>¿Decides cruzarlo o buscar otro camino?</p>'
-                    gameContainer.innerHTML += '<button id="cruzarRio" class="leftButton">Cruzar Río</button>';
-                    gameContainer.innerHTML += '<button id="buscarCamino" class="rightButton">Seguir Buscando</button>';
-
-                    document.getElementById('cruzarRio').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido cruzar el río agitado!</h4>';
-                        gameContainer.innerHTML += '<p>Luego de luchar ferozmente contra la corriente logras cruzar y encontrar la salida.</p>'
-                        gameContainer.innerHTML += '<p class="success">FELICIDADES, HAS LOGRADO ESCAPAR DEL BOSQUE</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/Cruzando.png">'
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-
-                    document.getElementById('buscarCamino').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido buscar otro camino!</h4>';
-                        gameContainer.innerHTML += '<p>Caminaste durante días y te quedaste sin comida ni agua.</p>'
-                        gameContainer.innerHTML += '<p class="muerto">HAS MUERTO</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/Venezuela.png">'
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-                })
-            });
-
-            document.getElementById('bosque').addEventListener('click', () => {
-                gameContainer.innerHTML = '<h4>Has elegido adentrarte en el bosque</h4>';
-                gameContainer.innerHTML += '<p>Has caminado durante algunas horas y te encuentras una cabaña abandonada.</p>'
-                gameContainer.innerHTML += '<p>¿Qué decides hacer?</p>'
-                gameContainer.innerHTML += '<button id="entrarCabaña" class="leftButton">Entrar</button>';
-                gameContainer.innerHTML += '<button id="ignorarCabaña" class="rightButton">Seguir adelante</button>';
-
-                document.getElementById('entrarCabaña').addEventListener('click', () => {
-                    gameContainer.innerHTML = '<h4>¡Has elegido entrar a la cabaña!</h4>';
-                    gameContainer.innerHTML += '<p>Dentro de la cabaña te encuentras un cofre misterioso y una llave dorada, tienes que elegir cuál tomar.</p>'
-                    gameContainer.innerHTML += '<p>¿Cuál es tu decisión?</p>'
-                    gameContainer.innerHTML += '<button id="abrirCofre" class="leftButton">Abrir Cofre</button>';
-                    gameContainer.innerHTML += '<button id="tomarLlave" class="rightButton">Tomar Llave</button>';
-
-                    document.getElementById('abrirCofre').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido abrir el cofre!</h4>';
-                        gameContainer.innerHTML += '<p>Has encontrado el tesoro del bosque encantado.</p>'
-                        gameContainer.innerHTML += '<p class="success">FELICIDADES. ERES MILLONARIO DE COJONES.</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/millonario.png">'
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-
-                    document.getElementById('tomarLlave').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido tomar la llave!</h4>';
-                        gameContainer.innerHTML += '<p>Saliendo de la cabaña te resbalaste con excremento de caballo y te enterraste la llave en el corazón al caer.</p>'
-                        gameContainer.innerHTML += '<p class="muerto">HAS MUERTO</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/Resbalando.png">'
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-                })
-                document.getElementById('ignorarCabaña').addEventListener('click', () => {
-                    gameContainer.innerHTML = '<h4>¡Has elegido ignorar la cabaña y seguir adelante!</h4>';
-                    gameContainer.innerHTML += '<p>Luego de seguir caminando durante un rato más, encontraste un grupo de cholos. Te ofrecen un porro de alta calidad.</p>'
-                    gameContainer.innerHTML += '<p>¿Qué decides hacer?</p>'
-                    gameContainer.innerHTML += '<button id="fumarPorro" class="leftButton">Fumar</button>';
-                    gameContainer.innerHTML += '<button id="ignorarPorro" class="rightButton">Ignorarlos y huir</button>';
-
-                    document.getElementById('fumarPorro').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido fumar del porro encantado!</h4>';
-                        gameContainer.innerHTML += '<p>Ahora eres parte de la comunidad de cholos y te convierten en su lider.</p>';
-                        gameContainer.innerHTML += '<p class="atrapado">HAS QUEDADO ATRAPADO CON LOS CHOLOS</p>';
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/cholos.png">';
-
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-
-                    document.getElementById('ignorarPorro').addEventListener('click', () => {
-                        gameContainer.innerHTML = '<h4>¡Has elegido ignorar el camino de las drogas!</h4>';
-                        gameContainer.innerHTML += '<p>Excelente para tu salud, pero pésimo para caerles bien a los cholos. <strong>Te han apuñalado.</strong></p>'
-                        gameContainer.innerHTML += '<p class="muerto">HAS MUERTO</p>'
-                        gameContainer.innerHTML += '<button id="restartButton">Volver al Inicio</button><br>';
-                        gameContainer.innerHTML +='<img src="Assets/apuñalando.png">'
-                    
-                        document.getElementById('restartButton').addEventListener('click', () => {
-                            startGame();
-                        });
-                    })
-                })
-            });
-        });
+const gameStages = [    //JSON Game Stages
+    {   //Stage 0 BIENVENIDA
+        title: "¡Bienvenido al juego!",
+        description: "El siguiente juego basado en texto plantea una historia con múltiples caminos y desenlaces. Te encuentras perdido en un bosque encantado. Los rumores dicen que se esconde un tesoro en el bosque. Puedes morir, quedar atrapado, escapar o volverte millonario, todo dependerá de tus decisiones. Has encontrado un sendero. ¿Deseas seguirlo o crear tu propio camino?",
+        options: [
+            { text: "Seguir Sendero", nextStage: 1 },
+            { text: "Adentrarse en Bosque", nextStage: 8 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 1 SENDERO
+        title: "¡Has elegido seguir por el sendero!",
+        description: "Has caminado durante varios kilometros y te encuentras con una división de caminos al frente. ¿Qué camino decides tomar?",
+        options: [
+            { text: "Izquierda", nextStage: 2 },
+            { text: "Derecha", nextStage: 3 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 2 SENDERO/IZQUIERDA
+        title: "¡Has elegido ir por el camino de la izquierda!",
+        description: "Luego de otra larga caminata te has encontrado con una cueva enorme y muy obscura. ¿Qué decides hacer?",
+        options: [
+            { text: "Entrar", nextStage: 4 },
+            { text: "Seguir", nextStage: 5 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 3 SENDERO/DERECHA
+        title: "¡Has elegido ir por el camino de la derecha!",
+        description: "Luego de otra larga caminata te has encontrado con un río muy agitado. ¿Decides cruzarlo o buscar otro camino?",
+        options: [
+            { text: "Cruzar Río", nextStage: 6 },
+            { text: "Seguir Buscando", nextStage: 7 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 4 SENDERO/IZQUIERDA/ENTRAR     FINAL CUEVA
+        title: "¡Has elegido entrar a la cueva!",
+        description: "Te encuentras con una aldea perdida y te capturan. HAS QUEDADO ATRAPADO EN LA CUEVA",
+        options: [
+            { text: "Regresar", nextStage: 2 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/Atrapado-cueva.png"
+    },
+    {   //Stage 5 SENDERO/IZQUIERDA/SEGUIR      FINAL BARRANCO
+        title: "¡Has elegido ignorar la cueva!",
+        description: "Caminaste por otros varios kilometros y resbalaste por un barranco. HAS MUERTO",
+        options: [
+            { text: "Regresar", nextStage: 2 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/Caída-libre.png"
+    },
+    {   //Stage 6   SENDERO/DERECHA/CRUZAR      FINAL RÍO
+        title: "¡Has elegido cruzar el río agitado!",
+        description: "Luego de luchar ferozmente contra la corriente logras cruzar y encontrar la salida. FELICIDADES, HAS LOGRADO ESCAPAR DEL BOSQUE",
+        options: [
+            { text: "Regresar", nextStage: 3 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/Cruzando.png"
+    },
+    {   //Stage 7   SENDERO/DERECHA/SEGUIR      FINAL DESHIDRATACIÓN
+        title: "¡Has elegido buscar otro camino!",
+        description: "Caminaste durante días y te quedaste sin comida ni agua. HAS MUERTO",
+        options: [
+            { text: "Regresar", nextStage: 3 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/Venezuela.png"
+    },
+    {   //Stage 8   BOSQUE
+        title: "¡Has elegido adentrarte en el bosque!",
+        description: "Has caminado durante algunas horas y te encuentras una cabaña abandonada. ¿Qué decides hacer?",
+        options: [
+            { text: "Entrar", nextStage: 9 },
+            { text: "Seguir adelante", nextStage: 10 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 9   BOSQUE/ENTRAR
+        title: "¡Has elegido entrar a la cabaña!",
+        description: "Dentro de la cabaña te encuentras un cofre misterioso y una llave dorada, tienes que elegir cuál tomar. ¿Cuál es tu decisión?",
+        options: [
+            { text: "Abrir Cofre", nextStage: 11 },
+            { text: "Tomar Llave", nextStage: 12 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 10   BOSQUE/SEGUIR
+        title: "¡Has elegido ignorar la cabaña y seguir adelante!",
+        description: "Luego de seguir caminando durante un rato más, encontraste un grupo de cholos. Te ofrecen un porro de alta calidad. ¿Qué decides hacer?",
+        options: [
+            { text: "Fumar", nextStage: 13 },
+            { text: "Ignorarlos y huir", nextStage: 14 }
+        ],
+        imageURL: " "
+    },
+    {   //Stage 11   BOSQUE/ENTRAR/COFRE        FINAL MILLONARIO
+        title: "¡Has elegido abrir el cofre!",
+        description: "Has encontrado el tesoro del bosque encantado. FELICIDADES. ERES MILLONARIO DE COJONES.",
+        options: [
+            { text: "Regresar", nextStage: 9 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/millonario.png"
+    },
+    {   //Stage 12   BOSQUE/ENTRAR/LLAVE        FINAL MUERTO POR CAIDA
+        title: "¡Has elegido tomar la llave!",
+        description: "Saliendo de la cabaña te resbalaste con excremento de caballo y te enterraste la llave en el corazón al caer. HAS MUERTO",
+        options: [
+            { text: "Regresar", nextStage: 9 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/Resbalando.png"
+    },
+    {   //Stage 13   BOSQUE/SEGUIR/FUMAR        FINAL LIDER CHOLOS
+        title: "¡Has elegido fumar del porro encantado!",
+        description: "Ahora eres parte de la comunidad de cholos y te convierten en su lider. HAS QUEDADO ATRAPADO CON LOS CHOLOS",
+        options: [
+            { text: "Regresar", nextStage: 10 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/cholos.png"
+    },
+    {   //Stage 14   BOSQUE/SEGUIR/HUIR         FINAL APUÑALADO CHOLOS
+        title: "¡Has elegido ignorar el camino de las drogas!",
+        description: "Excelente para tu salud, pero pésimo para caerles bien a los cholos. Te han apuñalado. HAS MUERTO",
+        options: [
+            { text: "Regresar", nextStage: 10 },
+            { text: "Reiniciar juego", nextStage: 0 }
+        ],
+        imageURL: "Assets/apuñalando.png"
     }
-    startGame();
-});
+];
+
+function updateGame() {
+    const stage = gameStages[gameState.currentStage];                       //Current Stage
+    document.getElementById('title').textContent = stage.title;             //Title update
+    document.getElementById('description').textContent = stage.description; //Description update
+    document.getElementById('button1').textContent = stage.options[0].text; //Left button update
+    document.getElementById('button2').textContent = stage.options[1].text; //Right button update
+    document.getElementById('image').src = stage.imageURL;                  //Image update
+}
+
+function makeChoice(choiceIndex) {
+    const currentStage = gameStages[gameState.currentStage];                //Current stage
+    const nextStageIndex = currentStage.options[choiceIndex].nextStage;     //Next stage
+    gameState.currentStage = nextStageIndex;                                //Stage update
+    updateGame();                                                           //Graphic update
+}
+
+updateGame();

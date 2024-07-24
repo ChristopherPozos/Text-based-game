@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
-    <div id="game-container">
+    <div id="game" class="gameContainer">
+        <h4 id="title">Título del Juego</h4>
+        <p id="description">Descripción inicial del juego.</p>
+        <div class="buttons">
+            <button id="button1" onclick="makeChoice(0)">Opción 1</button>
+            <button id="button2" onclick="makeChoice(1)">Opción 2</button>
+        </div>
+        <div id="imgContainer">
+            <img src=" " id="image">
+        </div>
     </div>
     <script src="JS/script.js"></script>
 </body>
